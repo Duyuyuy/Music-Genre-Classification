@@ -31,16 +31,10 @@ def save_mfcc(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_length=512, 
         "tempo": [],
         "spectral_contrast": [],
         "chroma_cqt": [],
-        "beat_dispersion": [],
         "beat_hist": [],
         "zero_cross_rate": []
     }
 
-    #     data = {
-    #         "mapping": [],
-    #         "labels": [],
-    #         "feature": []
-    #     }
 
     samples_per_segment = int(SAMPLES_PER_TRACK / num_segments)
     num_mfcc_vectors_per_segment = math.ceil(samples_per_segment / hop_length)
@@ -67,9 +61,6 @@ def save_mfcc(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_length=512, 
                 tempo, beat_frames = librosa.beat.beat_track(y=signal, sr=sample_rate, start_bpm=100)
                 beat_times = librosa.frames_to_time(beat_frames, sr=sample_rate)
 
-                # Calculate beat dispersion
-                ibis = np.diff(beat_times)
-                beat_dispersion = np.std(ibis) / np.mean(ibis)
 
                 # Compute beat times using beat tracking algorithm
                 # Compute histogram of beat times
@@ -79,9 +70,19 @@ def save_mfcc(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_length=512, 
                 # Normalize the histogram to have unit area
                 beat_hist = hist / np.sum(hist)
 
-                # # Extract harmonic features
-                # chroma_cqt = librosa.feature.chroma_cqt(y=signal, sr=sample_rate)
-                # chroma_cqt = chroma_cqt.T
+                # Extract harmonic features
+                chroma_cqt = librosa.feature.chroma_cqt(y=signal, sr=sample_rate)
+                chroma_cqt = chroma_cqt.T
+
+                # Calculate STFT and power spectrum
+                stft = np.abs(librosa.stft(y=signal))
+                power_spectrum = stft ** 2
+
+                # Calculate mean of power spectrum
+                mean_power = np.mean(power_spectrum, axis=1)
+
+                # Calculate square root of mean to get RMSE
+                rmse = np.sqrt(mean_power)
 
                 # process all segments of audio file
                 for d in range(num_segments):
@@ -90,10 +91,6 @@ def save_mfcc(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_length=512, 
                         start = samples_per_segment * d
                         finish = start + samples_per_segment
 
-                        # Extract melodic features
-                        chroma_stft = librosa.feature.chroma_stft(y=signal[start:finish], sr=sample_rate,
-                                                                  hop_length=hop_length)
-                        chroma_stft = chroma_stft.T
 
                         S = librosa.feature.melspectrogram(y=signal[start:finish], sr=sample_rate, n_fft=n_fft,
                                                            hop_length=hop_length,
@@ -121,9 +118,8 @@ def save_mfcc(dataset_path, json_path, num_mfcc=13, n_fft=2048, hop_length=512, 
                         if len(mfcc) == num_mfcc_vectors_per_segment:
                             # data["mfcc"].append(mfcc.tolist())
                             data["spectral_contrast"].append(spectral_contrast.tolist())
-                            # data["chroma_cqt"].append(chroma_cqt.tolist())
-                            data["beat_dispersion"].append(beat_dispersion)
-                            # data["tempo"].append(tempo)
+                            data["chroma_cqt"].append(chroma_cqt.tolist())
+                            data["tempo"].append(tempo)
                             data["zero_cross_rate"].append(zero_cross_rate)
                             data["beat_hist"].append(beat_hist.tolist())
 

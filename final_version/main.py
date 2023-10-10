@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import librosa as lbs
 import pandas as pd
 import os
@@ -7,7 +6,7 @@ import shutil
 from pydub import AudioSegment
 from pydub.playback import play
 from pydub.utils import make_chunks
-import IPython as ipd
+
 
 metadata= pd.read_csv("data/output1.csv")
 genres = metadata['TAGS'].unique()
