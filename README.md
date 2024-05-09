@@ -7,8 +7,8 @@ This is my thesis project
   <ol>
     <li><a href="#introduction">Project Overview</a></li>
     <li><a href="#process">Installation</a></li>
-    <li><a href="#built-with">Usage</a></li>  
-    <li><a href="#results">Demo</a></li>  
+    <li><a href="#Usage">Usage</a></li>  
+    <li><a href="#Demo">Demo</a></li>  
     <li><a href="#acknowledgements">Acknowledgments</a></li> -->
   </ol>
 </details>
