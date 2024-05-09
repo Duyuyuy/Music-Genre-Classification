@@ -22,7 +22,15 @@ This is my thesis project
    pip install -r requirements.txt
 ```
 ## Usage
-```python src/main.py```
+to extract data:
+```bash 
+python src/extract.py
+```
+
+to run the result:
+```bash 
+python src/main.py
+```
 
 ## Demo
 
