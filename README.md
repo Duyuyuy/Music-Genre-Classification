@@ -21,16 +21,37 @@ This is my thesis project
    ```bash
    pip install -r requirements.txt
 ```
+
 ## Usage
-to extract data:
+
+MyProject/
+├── src/ :Contains the main source code files.
+│   ├── main.py : for training model and run demo
+    ├── extract.py : transform audio file to json file containing spectrogram
+    └── prepare.py :load json array to train model
+├── data/
+    ├── Final/ : store audio file
+         ├── ... (genres)
+    └── JsonData/ : a dict contain: mapping, label, spectrogram
+├── demo/
+     ├── audio/
+     └── json/
+     
+├── README.md
+└── requirements.txt
+
+!To extract data (transform audio file to spectrogram):
 ```bash 
 python src/extract.py
 ```
-
-to run the result:
+_extract.py
+!To run the result:
 ```bash 
 python src/main.py
 ```
+## Configuration
+_ Modify number of classes and epoch according to number of genres
+_ Replace file in demo/audio/ to detect the genre of the sample
 
 ## Demo
 
