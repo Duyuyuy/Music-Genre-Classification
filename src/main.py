@@ -134,6 +134,6 @@ if __name__ == '__main__':
     y_pred_demo = np.argmax(y_pred_demo, axis=1)
     print("This sample seems to be of the {} genre.".format(mapping[y_pred_demo[0]]))
 
-    # plot_history(history)
-    # plot_confusion_matrix(y_test,y_pred_classes,mapping)
-    # model.save("model.keras")
+    plot_history(history)
+    plot_confusion_matrix(y_test,y_pred_classes,mapping)
+    model.save("model.keras")
