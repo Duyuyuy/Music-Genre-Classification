@@ -26,18 +26,29 @@ This is my thesis project
 
 MyProject/
 ├── src/ :Contains the main source code files.
+
 │   ├── main.py : for training model and run demo
+
     ├── extract.py : transform audio file to json file containing spectrogram
+    
     └── prepare.py :load json array to train model
+    
 ├── data/
+
     ├── Final/ : store audio file
+    
          ├── ... (genres)
+         
     └── JsonData/ : a dict contain: mapping, label, spectrogram
+    
 ├── demo/
+
      ├── audio/
+     
      └── json/
      
 ├── README.md
+
 └── requirements.txt
 
 !To extract data (transform audio file to spectrogram):
