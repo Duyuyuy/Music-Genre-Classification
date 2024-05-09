@@ -20,7 +20,7 @@ This is my thesis project
 
    ```bash
    pip install -r requirements.txt
-
+```
 ## Usage
 python src/main.py
 
