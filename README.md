@@ -22,6 +22,8 @@ This is my thesis project
    pip install -r requirements.txt
 ```
 
+Data source: https://drive.google.com/drive/folders/1_Pq7xJrFJRdHl-B6RK1yB7Sw7eXnpL6w?usp=drive_link
+
 ## Usage
 ```
 MyProject/
