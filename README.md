@@ -22,7 +22,7 @@ This is my thesis project
    pip install -r requirements.txt
 ```
 ## Usage
-python src/main.py
+```python src/main.py```
 
 ## Demo
 
