@@ -23,7 +23,7 @@ This is my thesis project
 ```
 
 ## Usage
-
+```
 MyProject/
 ├── src/ :Contains the main source code files.
 │   ├── main.py : for training model and run demo
@@ -38,7 +38,7 @@ MyProject/
      └── json/ 
 ├── README.md
 └── requirements.txt
-
+```
 !To extract data (transform audio file to spectrogram):
 ```bash 
 python src/extract.py
