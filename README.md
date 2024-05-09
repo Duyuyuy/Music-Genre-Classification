@@ -23,7 +23,6 @@ This is my thesis project
 ```
 
 ## Usage
-'''
 MyProject/
 
 ├── src/ :Contains the main source code files.
@@ -71,4 +70,11 @@ _ Replace file in demo/audio/ to detect the genre of the sample
   <img src="https://github.com/Duyuyuy/Music-Genre-Classification/assets/89919775/017c7dcd-8c42-4940-9bce-9825c8c44f1f" width=800 ><br/>
 </p>
 
-
+MyProject/
+├── src/
+│   ├── main.py
+│   └── utils.py
+├── data/
+│   └── data.csv
+├── README.md
+└── requirements.txt
